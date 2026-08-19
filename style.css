@@ -213,6 +213,105 @@ h2 span {
     font-weight: bold;
 }
 
+.gallery-section > p:not(.section-tag) {
+    margin-bottom: 40px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.gallery-item {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 1px solid #292929;
+    background: #0a0a0a;
+    cursor: pointer;
+}
+
+.gallery-item::after {
+    content: "🔍";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    background: rgba(0,0,0,.55);
+    opacity: 0;
+    transition: .25s;
+}
+
+.gallery-item:hover::after {
+    opacity: 1;
+}
+
+.gallery-item:hover {
+    border-color: #9b111e;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(25%) contrast(1.05);
+    transition: transform .4s, filter .4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+    filter: grayscale(0%) contrast(1.1);
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(3,3,3,.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+    padding: 40px;
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid #9b111e;
+    box-shadow: 0 0 50px rgba(155,17,30,.35);
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    background: none;
+    border: 1px solid #555;
+    color: #ddd;
+    font-size: 18px;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.lightbox-close:hover {
+    border-color: #9b111e;
+    color: white;
+}
+
 .download {
     text-align: center;
     border-top: 1px solid #222;
@@ -261,6 +360,10 @@ footer {
 @media (max-width: 700px) {
     .cards {
         grid-template-columns: 1fr;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .hero h1 {

@@ -28,6 +28,9 @@
             <a class="btn secondary" href="#sobre">
                 CONHECER O JOGO
             </a>
+            <a class="btn secondary" href="#galeria">
+                VER GALERIA
+            </a>
         </div>
     </header>
 
@@ -86,8 +89,35 @@
             </div>
         </section>
 
+        <section class="section gallery-section" id="galeria">
+            <p class="section-tag">03 / GALERIA</p>
+            <h2>CENAS DA<br><span>INVESTIGAÇÃO</span></h2>
+            <p>Um vislumbre do que espera por você em Ravenscroft.</p>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-full="img/screenshot1.jpg">
+                    <img src="img/screenshot1.jpg" alt="Cena do jogo 1" loading="lazy">
+                </div>
+                <div class="gallery-item" data-full="img/screenshot2.jpg">
+                    <img src="img/screenshot2.jpg" alt="Cena do jogo 2" loading="lazy">
+                </div>
+                <div class="gallery-item" data-full="img/screenshot3.jpg">
+                    <img src="img/screenshot3.jpg" alt="Cena do jogo 3" loading="lazy">
+                </div>
+                <div class="gallery-item" data-full="img/screenshot4.jpg">
+                    <img src="img/screenshot4.jpg" alt="Cena do jogo 4" loading="lazy">
+                </div>
+                <div class="gallery-item" data-full="img/screenshot5.jpg">
+                    <img src="img/screenshot5.jpg" alt="Cena do jogo 5" loading="lazy">
+                </div>
+                <div class="gallery-item" data-full="img/screenshot6.jpg">
+                    <img src="img/screenshot6.jpg" alt="Cena do jogo 6" loading="lazy">
+                </div>
+            </div>
+        </section>
+
         <section class="download">
-            <p class="section-tag">03 / ARQUIVO</p>
+            <p class="section-tag">04 / ARQUIVO</p>
             <h2>PRONTO PARA<br><span>INVESTIGAR?</span></h2>
             <p>Baixe o jogo e descubra o que realmente aconteceu em Ravenscroft.</p>
 
@@ -103,5 +133,38 @@
         <p>A MARCA DO ASSASSINO</p>
         <p>PRODUZIDO POR 2D</p>
     </footer>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">✕</button>
+        <img src="" alt="Imagem ampliada" id="lightboxImg">
+    </div>
+
+    <script>
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxClose = document.getElementById('lightboxClose');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const full = item.getAttribute('data-full');
+                lightboxImg.src = full;
+                lightbox.classList.add('active');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        }
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    </script>
 </body>
 </html>
