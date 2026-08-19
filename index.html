@@ -95,23 +95,33 @@
             <p>Um vislumbre do que espera por você em Ravenscroft.</p>
 
             <div class="gallery-grid">
-                <div class="gallery-item" data-full="img/screenshot1.jpg">
-                    <img src="img/screenshot1.jpg" alt="Cena do jogo 1" loading="lazy">
+                <div class="gallery-item" data-full="img/biblioteca-escura.jpg" data-caption="A Biblioteca Escura — A Câmara Subterrânea">
+                    <img src="img/biblioteca-escura.jpg" alt="A Biblioteca Escura — A Câmara Subterrânea" loading="lazy">
+                    <p class="gallery-caption">A Biblioteca Escura</p>
                 </div>
-                <div class="gallery-item" data-full="img/screenshot2.jpg">
-                    <img src="img/screenshot2.jpg" alt="Cena do jogo 2" loading="lazy">
+                <div class="gallery-item" data-full="img/torre-prefeitura.jpg" data-caption="A Torre da Antiga Prefeitura — Atos 3 e 4">
+                    <img src="img/torre-prefeitura.jpg" alt="A Torre da Antiga Prefeitura" loading="lazy">
+                    <p class="gallery-caption">A Torre da Antiga Prefeitura</p>
                 </div>
-                <div class="gallery-item" data-full="img/screenshot3.jpg">
-                    <img src="img/screenshot3.jpg" alt="Cena do jogo 3" loading="lazy">
+                <div class="gallery-item" data-full="img/trilha-floresta.jpg" data-caption="A Trilha da Floresta Sombria">
+                    <img src="img/trilha-floresta.jpg" alt="A Trilha da Floresta Sombria" loading="lazy">
+                    <p class="gallery-caption">A Trilha da Floresta Sombria</p>
                 </div>
-                <div class="gallery-item" data-full="img/screenshot4.jpg">
-                    <img src="img/screenshot4.jpg" alt="Cena do jogo 4" loading="lazy">
+                <div class="gallery-item" data-full="img/mansao-em-chamas.jpg" data-caption="A Mansão em Chamas">
+                    <img src="img/mansao-em-chamas.jpg" alt="A Mansão em Chamas" loading="lazy">
+                    <p class="gallery-caption">A Mansão em Chamas</p>
                 </div>
-                <div class="gallery-item" data-full="img/screenshot5.jpg">
-                    <img src="img/screenshot5.jpg" alt="Cena do jogo 5" loading="lazy">
+                <div class="gallery-item" data-full="img/altar-oculto.jpg" data-caption="O Altar Oculto na Mansão de Emi">
+                    <img src="img/altar-oculto.jpg" alt="O Altar Oculto na Mansão de Emi" loading="lazy">
+                    <p class="gallery-caption">O Altar Oculto na Mansão de Emi</p>
                 </div>
-                <div class="gallery-item" data-full="img/screenshot6.jpg">
-                    <img src="img/screenshot6.jpg" alt="Cena do jogo 6" loading="lazy">
+                <div class="gallery-item" data-full="img/cripta.jpg" data-caption="Segundo Caso — A Cripta">
+                    <img src="img/cripta.jpg" alt="Segundo Caso — A Cripta" loading="lazy">
+                    <p class="gallery-caption">Segundo Caso — A Cripta</p>
+                </div>
+                <div class="gallery-item" data-full="img/personagem-principal.png" data-caption="O Investigador">
+                    <img src="img/personagem-principal.png" alt="O Investigador — Personagem Principal" loading="lazy">
+                    <p class="gallery-caption">O Investigador</p>
                 </div>
             </div>
         </section>
@@ -136,19 +146,25 @@
 
     <div class="lightbox" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">✕</button>
-        <img src="" alt="Imagem ampliada" id="lightboxImg">
+        <div class="lightbox-content">
+            <img src="" alt="Imagem ampliada" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
     </div>
 
     <script>
         const galleryItems = document.querySelectorAll('.gallery-item');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
         const lightboxClose = document.getElementById('lightboxClose');
 
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
                 const full = item.getAttribute('data-full');
+                const caption = item.getAttribute('data-caption') || '';
                 lightboxImg.src = full;
+                lightboxCaption.textContent = caption;
                 lightbox.classList.add('active');
             });
         });
